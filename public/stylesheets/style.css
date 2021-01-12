@@ -88,7 +88,30 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (max-width: 992px) {
+/* Show page */
+.showpage-banner {
+  position: relative;
+  z-index: -1;
+  margin: -5px;
+  height: 360px;
+  filter: brightness(50%);
+}
+
+.restaurant-showpage-title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.rounded-pill {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+#showpage-rating {
+  margin-top: -20px;
+}
+
+. @media screen and (max-width: 992px) {
   .card img {
     height: 115px;
   }
