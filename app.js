@@ -26,6 +26,15 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
   res.render('show', { restaurant: restaurant })
 })
 
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurants = restaurantList.results.filter(
+    restaurant =>
+      restaurant.name.includes(keyword) || restaurant.category.includes(keyword)
+  )
+  res.render('index', { restaurants: restaurants })
+})
+
 // Start and listener on the Express server
 app.listen(port, () => {
   console.log('Listening')
