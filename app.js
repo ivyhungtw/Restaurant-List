@@ -5,8 +5,8 @@ const port = 3000
 
 // Require packages used in the project
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json')
 const mongoose = require('mongoose')
+const Restaurant = require('./models/restaurant')
 
 // Connect to database
 mongoose.connect('mongodb://localhost/restaurant-list', {
@@ -29,23 +29,31 @@ app.use(express.static('public'))
 
 // Set up the routes and corresponding response
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(
-    restaurant => restaurant.id.toString() === req.params.restaurant_id
-  )
-  res.render('show', { restaurant: restaurant })
+  const id = req.params.restaurant_id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter(
-    restaurant =>
-      restaurant.name.includes(keyword) || restaurant.category.includes(keyword)
-  )
-  res.render('index', { restaurants: restaurants })
+  Restaurant.find({
+    $or: [
+      { name: new RegExp(keyword, 'i') },
+      { category: new RegExp(keyword, 'i') },
+    ],
+  })
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
 // Start and listener on the Express server
