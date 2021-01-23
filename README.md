@@ -30,6 +30,12 @@ git clone https://github.com/ivyhungtw/Restaurant-List.git
 npm install
 ```
 
+#### 載入 seed data
+
+```
+npm run seed
+```
+
 #### 使用 nodemon 啟動伺服器
 
 ```
@@ -41,5 +47,7 @@ npm run dev
 ## 環境建置
 
 - Node.js v12.15.1 -執行環境
-- Express V4.17.1 -框架
-- Express-handlebars V5.2.0 -模板引擎
+- Express v4.17.1 -框架
+- Express-handlebars v5.2.0 -模板引擎
+- mongoDB Community Serve v4.2.12 -資料庫
+- mongoose v5.11.13 -ODM
