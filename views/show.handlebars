@@ -17,6 +17,17 @@
 
   <div class="row mt-3">
     <div class="col-12 col-md-10 mx-auto">
+
+      <div class="d-flex justify-content-end mb-3">
+        {{!-- Edit --}}
+        <a href="/restaurants/{{ restaurant._id }}/edit" class="me-1"><i class="fas fa-edit" style="
+    color:#4592af"></i></a>
+        {{!-- Delete --}}
+        <form method="POST" action="/restaurants/{{ restaurant._id }}/delete" style="display: inline;">
+          <button type="submit" class="fas fa-trash-alt" style="border: none; background-color: white; color: var(--bs-gray);"></button>
+        </form>
+      </div>
+
       <h1 class="mb-3 restaurant-showpage-title">{{ restaurant.name }}</h1>
       <p class="mb-1 text-center text-secondary">
         <span class="text-secondary">
@@ -41,20 +52,11 @@
         {{ restaurant.phone }}
       </p>
 
-      <p class="mb-5">
+      <p class="mb-5 mx-2 text-center">
         {{ restaurant.description}}
       </p>
 
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name }}" style="max-width: 600px;">
-
-      <div class="d-flex justify-content-center">
-        {{!-- Edit --}}
-        <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-primary btn-sm me-1">Edit</a>
-        {{!-- Delete --}}
-        <form method="POST" action="/restaurants/{{ restaurant._id }}/delete" style="display: inline;">
-          <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
-        </form>
-      </div>
 
     </div>
   </div>
