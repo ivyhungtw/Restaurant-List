@@ -39,12 +39,12 @@
               </span>
 
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted d-flex justify-content-end">
               {{!-- Edit --}}
-              <a href="/restaurants/{{ this._id }}/edit">edit</a>
+              <a href="/restaurants/{{ this._id }}/edit" class="btn btn-primary btn-sm me-1">Edit</a>
               {{!-- Delete --}}
               <form method="POST" action="/restaurants/{{ this._id }}/delete" style="display: inline;">
-                <button type="submit" class="btn btn-secondary btn-sm">delete</button>
+                <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
               </form>
               
             </div>
