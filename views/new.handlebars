@@ -1,0 +1,100 @@
+<div class="container py-5">
+
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Add A New Restaurant <i class="fas fa-key"></i></h5>
+          <hr>
+          <form method="POST" action="/restaurants">
+            {{!-- Name --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Name
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="name" class="form-control" id="name" value="{{data.name}}">
+              </div>
+            </div>
+            {{!-- English name --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                English Name
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="name_en" class="form-control" id="name_en" value="{{data.name_en}}">
+              </div>
+            </div>
+            {{!-- Category --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Category
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="category" class="form-control" id="category" value="{{data.category}}">
+              </div>
+            </div>
+            {{!-- Image --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Image
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="image" class="form-control" id="image" value="{{data.image}}">
+              </div>
+            </div>
+            {{!-- Location --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Location
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="location" class="form-control" id="location" value="{{data.location}}">
+              </div>
+            </div>
+            {{!-- Phone --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Phone
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="phone" class="form-control" id="phone" value="{{data.phone}}">
+              </div>
+            </div>
+            {{!-- Google map --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Google map
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="google_map" class="form-control" id="google_map" value="{{data.google_map}}">
+              </div>
+            </div>
+            {{!-- Rating --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Rating
+              </label>
+              <div class="col-md-9">
+                <input type="range" class="form-range" min="1" max="5" step="0.1" name="rating" id="rating">
+              </div>
+            </div>
+            {{!-- Description --}}
+            <div class="mb-3 row">
+              <label for="length" class="col-md-3 col-form-label">
+                Description
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="description" class="form-control" id="description" value="{{data.description}}">
+              </div>
+            </div>
+
+            <button class="btn btn-success" type="submit">Create</button>
+          </form>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,6 +24,9 @@ db.once('open', () => console.log('mogodb connected!'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+// Set up body parse
+app.use(express.urlencoded({ extended: true }))
+
 // Set up static files
 app.use(express.static('public'))
 
@@ -32,6 +35,26 @@ app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  const data = req.body
+  return Restaurant.create({
+    name: data.name,
+    name_en: data.name_en,
+    category: data.category,
+    image: data.image,
+    location: data.location,
+    google_map: data.google_map,
+    rating: parseFloat(data.rating),
+    description: data.description,
+  })
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
