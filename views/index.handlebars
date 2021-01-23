@@ -40,7 +40,13 @@
 
             </div>
             <div class="card-footer text-muted">
+              {{!-- Edit --}}
               <a href="/restaurants/{{ this._id }}/edit">edit</a>
+              {{!-- Delete --}}
+              <form method="POST" action="/restaurants/{{ this._id }}/delete" style="display: inline;">
+                <button type="submit" class="btn btn-secondary btn-sm">delete</button>
+              </form>
+              
             </div>
           </div>
         </a>
