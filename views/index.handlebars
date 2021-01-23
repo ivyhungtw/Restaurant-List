@@ -26,17 +26,21 @@
           <div class="card mb-3">
             <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name }}">
             <div class="card-body p-3">
+              {{!-- Name --}}
               <h6 class="card-title mb-1">{{ this.name }}</h6>
-
+              {{!-- Category --}}
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{ this.category }}
               </div>
-
+              {{!-- Rating --}}
               <span class="badge badge-pill bg-danger font-weight-normal">
                 {{ this.rating }}
                 <i class="fas fa-star fa-xs"></i>
               </span>
 
+            </div>
+            <div class="card-footer text-muted">
+              <a href="/restaurants/{{ this._id }}/edit">edit</a>
             </div>
           </div>
         </a>
