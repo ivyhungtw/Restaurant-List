@@ -20,11 +20,10 @@
 
       <div class="d-flex justify-content-end mb-3">
         {{!-- Edit --}}
-        <a href="/restaurants/{{ restaurant._id }}/edit" class="me-1"><i class="fas fa-edit" style="
-    color:#4592af"></i></a>
+        <a href="/restaurants/{{ restaurant._id }}/edit" class="me-1"><i class="fas fa-edit icon-edit"></i></a>
         {{!-- Delete --}}
         <form method="POST" action="/restaurants/{{ restaurant._id }}/delete" style="display: inline;">
-          <button type="submit" class="fas fa-trash-alt" style="border: none; background-color: white; color: var(--bs-gray);"></button>
+          <button type="submit" class="fas fa-trash-alt icon-delete" style="border: none;"></button>
         </form>
       </div>
 

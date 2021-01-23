@@ -21,7 +21,7 @@
 <div class="container">
   <div class="row" id="data-panel">
     {{#each restaurants}}
-      <div class="col-12 col-sm-4 col-lg-3 mb-4 mx-auto">
+      <div class="col-12 col-sm-4 col-lg-3 mb-4">
         <a href="/restaurants/{{ this._id }}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name }}">
@@ -32,21 +32,23 @@
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{ this.category }}
               </div>
-              {{!-- Rating --}}
-              <span class="badge badge-pill bg-danger font-weight-normal">
-                {{ this.rating }}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
 
-            </div>
-            <div class="card-footer text-muted d-flex justify-content-end">
-              {{!-- Edit --}}
-              <a href="/restaurants/{{ this._id }}/edit" class="btn btn-primary btn-sm me-1">Edit</a>
-              {{!-- Delete --}}
-              <form method="POST" action="/restaurants/{{ this._id }}/delete" style="display: inline;">
-                <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
-              </form>
-              
+              <div class="d-flex justify-content-between">
+                {{!-- Rating --}}
+                <span class="badge badge-pill bg-danger font-weight-normal">
+                {{ this.rating }}
+                  <i class="fas fa-star fa-xs"></i>
+                </span>
+                <div>
+                  {{!-- Edit --}}
+                  <a href="/restaurants/{{ this._id }}/edit" class="me-1"><i class="fas fa-edit icon-edit"></i></a>
+                  {{!-- Delete --}}
+                  <form method="POST" action="/restaurants/{{ this._id }}/delete" style="display: inline;">
+                    <button type="submit" class="fas fa-trash-alt icon-delete"></button>
+                  </form>
+                </div>
+              </div>
+
             </div>
           </div>
         </a>

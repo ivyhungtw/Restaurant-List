@@ -21,6 +21,10 @@ header {
   border: none;
 }
 
+#addBtn:hover {
+  background-color: #226089;
+}
+
 /* Banner */
 .banner {
   position: relative;
@@ -93,6 +97,24 @@ header {
   text-align: center;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.icon-edit {
+  color: #4592af;
+}
+
+.icon-edit:hover {
+  color: #226089;
+}
+
+.icon-delete {
+  border: none;
+  background-color: white;
+  color: var(--bs-gray);
+}
+
+.icon-delete:hover {
+  color: var(--bs-gray-dark);
 }
 
 /* Show page */
