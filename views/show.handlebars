@@ -46,6 +46,16 @@
       </p>
 
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name }}" style="max-width: 600px;">
+
+      <div class="d-flex justify-content-center">
+        {{!-- Edit --}}
+        <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-primary btn-sm me-1">Edit</a>
+        {{!-- Delete --}}
+        <form method="POST" action="/restaurants/{{ restaurant._id }}/delete" style="display: inline;">
+          <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>
