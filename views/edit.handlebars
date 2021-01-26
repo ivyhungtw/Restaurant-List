@@ -12,7 +12,7 @@
         <div class="card-body">
           <h5 class="card-title"><i class="fas fa-edit"></i> Edit Restaurant Info</h5>
           <hr>
-          <form method="POST" action="/restaurants/{{restaurant._id}}/edit">
+          <form method="POST" action="/restaurants/{{restaurant._id}}?_method=PUT">
             {{!-- Name --}}
             <div class="mb-3 row">
               <label for="length" class="col-md-3 col-form-label">
