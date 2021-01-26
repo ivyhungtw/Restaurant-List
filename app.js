@@ -1,25 +1,13 @@
 // Require related packages and defined server-related variables
 const express = require('express')
 const exphbs = require('express-handlebars')
-const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
 const routes = require('./routes')
+require('./config/mongoose')
 
 const port = 3000
 const app = express()
-
-// Connect to database
-mongoose.connect('mongodb://localhost/restaurant-list', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-// Get connection status
-const db = mongoose.connection
-// Error
-db.on('error', () => console.log('mogodb error!'))
-// Success
-db.once('open', () => console.log('mogodb connected!'))
 
 // Set up template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
