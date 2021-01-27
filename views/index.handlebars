@@ -17,6 +17,20 @@
   </div>
 </div>
 
+{{!-- Dropdown button --}}
+<div class="container d-flex justify-content-end" id="dropdownBtn">
+  <form action="/sort" class="input-group" style="width: 15%;">
+    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="method">
+      <option disabled selected>Choose...</option>
+      <option value="name">A -> Z</option>
+      <option value="-name">Z -> A</option>
+      <option value="category">Category</option>
+      <option value="-rating">Rating</option>
+    </select>
+    <button class="btn btn-outline-secondary" type="submit">Sort</button>
+  </form>
+</div>
+
 <!-- restaurant list -->
 <div class="container">
   <div class="row" id="data-panel">

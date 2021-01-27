@@ -66,9 +66,14 @@ header {
   border-color: #ced4da;
 }
 
+/* Dropdown button */
+#dropdownBtn {
+  margin-top: 5rem;
+}
+
 /* Card */
 #data-panel {
-  margin-top: 6rem;
+  margin-top: 2rem;
 }
 
 .card {
