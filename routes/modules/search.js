@@ -5,11 +5,17 @@ const router = express.Router()
 // Require Restaurant model
 const Restaurant = require('../../models/restaurant')
 
-// Set up routes of home page
+// Set up routes
 router.get('/', (req, res) => {
-  Restaurant.find()
+  const keyword = req.query.keyword
+  Restaurant.find({
+    $or: [
+      { name: new RegExp(keyword.trim(), 'i') },
+      { category: new RegExp(keyword.trim(), 'i') },
+    ],
+  })
     .lean()
-    .then(restaurants => res.render('index', { restaurants }))
+    .then(restaurants => res.render('index', { restaurants, keyword }))
     .catch(error => console.log(error))
 })
 
