@@ -5,7 +5,7 @@
   <div class="search-bar-outer">
     <h1 class="mb-3">Discover Local Food</h1>
     <div class="search-bar-inner">
-      <form action="/search">
+      <form action="/restaurants/search">
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..." value="{{ keyword }}" aria-describedby="search-button">
           <div class="input-group-append">
@@ -19,7 +19,7 @@
 
 {{!-- Dropdown button --}}
 <div class="container d-flex justify-content-end" id="dropdownBtn">
-  <form action="/sort" class="input-group" style="width: 15%;">
+  <form action="/restaurants/sort" class="input-group" style="width: 15%;">
     <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="method">
       <option disabled selected>Choose...</option>
       <option value="name">A -> Z</option>
