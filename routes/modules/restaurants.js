@@ -10,17 +10,9 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-router.get('/sort', (req, res) => {
-  const method = req.query.method
-  Restaurant.find()
-    .lean()
-    .sort(method)
-    .then(restaurants => res.render('index', { restaurants, method }))
-    .catch(error => console.log(error))
-})
-
-router.get('/search', (req, res) => {
+router.get('', (req, res) => {
   const keyword = req.query.keyword
+  const sort = req.query.sort
   Restaurant.find({
     $or: [
       { name: new RegExp(keyword.trim(), 'i') },
@@ -28,6 +20,7 @@ router.get('/search', (req, res) => {
     ],
   })
     .lean()
+    .sort(sort)
     .then(restaurants => res.render('index', { restaurants, keyword }))
     .catch(error => console.log(error))
 })
