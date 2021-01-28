@@ -7,7 +7,6 @@ const Restaurant = require('../../models/restaurant')
 
 // Set up routes
 router.get('/', (req, res) => {
-  console.log('req.query', req.query)
   const method = req.query.method
   Restaurant.find()
     .lean()

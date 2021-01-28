@@ -15,16 +15,16 @@
           <form method="POST" action="/restaurants/{{restaurant._id}}?_method=PUT">
             {{!-- Name --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="name" class="col-md-3 col-form-label">
                 Name
               </label>
               <div class="col-md-9">
-                <input type="text" name="name" class="form-control" id="name" value="{{restaurant.name}}">
+                <input type="text" name="name" class="form-control" id="name" value="{{restaurant.name}}" required>
               </div>
             </div>
             {{!-- English name --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="name_en" class="col-md-3 col-form-label">
                 English Name
               </label>
               <div class="col-md-9">
@@ -33,65 +33,65 @@
             </div>
             {{!-- Category --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="category" class="col-md-3 col-form-label">
                 Category
               </label>
               <div class="col-md-9">
-                <input type="text" name="category" class="form-control" id="category" value="{{restaurant.category}}">
+                <input type="text" name="category" class="form-control" id="category" value="{{restaurant.category}}" required>
               </div>
             </div>
             {{!-- Image --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="image" class="col-md-3 col-form-label">
                 Image
               </label>
               <div class="col-md-9">
-                <input type="text" name="image" class="form-control" id="image" value="{{restaurant.image}}">
+                <input type="text" name="image" class="form-control" id="image" value="{{restaurant.image}}" required>
               </div>
             </div>
             {{!-- Location --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="location" class="col-md-3 col-form-label">
                 Location
               </label>
               <div class="col-md-9">
-                <input type="text" name="location" class="form-control" id="location" value="{{restaurant.location}}">
+                <input type="text" name="location" class="form-control" id="location" value="{{restaurant.location}}" required>
               </div>
             </div>
             {{!-- Phone --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="phone" class="col-md-3 col-form-label">
                 Phone
               </label>
               <div class="col-md-9">
-                <input type="text" name="phone" class="form-control" id="phone" value="{{restaurant.phone}}">
+                <input type="text" name="phone" class="form-control" id="phone" value="{{restaurant.phone}}" required>
               </div>
             </div>
             {{!-- Google map --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="google_map" class="col-md-3 col-form-label">
                 Google map
               </label>
               <div class="col-md-9">
-                <input type="text" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}">
+                <input type="text" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}" required>
               </div>
             </div>
             {{!-- Rating --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="rating" class="col-md-3 col-form-label">
                 Rating
               </label>
               <div class="col-md-9">
-                <input type="range" class="form-range" min="1" max="5" step="0.1" name="rating" id="rating" value="{{restaurant.rating}}">
+                <input type="range" class="form-range" min="1" max="5" step="0.1" name="rating" id="rating" value="{{restaurant.rating}}" required>
               </div>
             </div>
             {{!-- Description --}}
             <div class="mb-3 row">
-              <label for="length" class="col-md-3 col-form-label">
+              <label for="description" class="col-md-3 col-form-label">
                 Description
               </label>
               <div class="col-md-9">
-                <input type="text" name="description" class="form-control" id="description" value="{{restaurant.description}}">
+                <input type="text" name="description" class="form-control" id="description" value="{{restaurant.description}}" required>
               </div>
             </div>
 
