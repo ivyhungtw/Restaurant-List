@@ -25,6 +25,19 @@ header {
   background-color: #226089;
 }
 
+#loginBtn {
+  border: 1px solid #4592af;
+  color: #4592af;
+  background-color: none;
+  border-radius: 1rem;
+  /* border: none; */
+}
+
+#loginBtn:hover {
+  background-color: #226089;
+  color: white;
+}
+
 /* Banner */
 .banner {
   position: relative;

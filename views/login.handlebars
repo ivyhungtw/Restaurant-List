@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Account Login</h1>
+  <form action="/login" method="POST" class="row">
+    {{#if errorMsg}}
+    <div class="col-md-12 my-1">
+      <small style="color: rgb(219, 2, 2);">{{ errorMsg }}</small>
+    </div>
+    {{/if}}
+    <div class="col-md-12 my-3">
+      <input type="text" name="email" placeholder="Email" value="{{ email }}" required>
+    </div>
+    <div class="col-md-12 mb-3">
+      <input type="text" name="password" placeholder="Password" value="{{ password }}" required>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-success">Sign in</button>
+    </div>
+  </form>
+</div>
