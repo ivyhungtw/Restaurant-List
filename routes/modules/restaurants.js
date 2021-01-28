@@ -21,7 +21,7 @@ router.get('', (req, res) => {
   })
     .lean()
     .sort(sort)
-    .then(restaurants => res.render('index', { restaurants, keyword }))
+    .then(restaurants => res.render('index', { restaurants, keyword, sort }))
     .catch(error => console.log(error))
 })
 

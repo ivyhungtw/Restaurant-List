@@ -19,10 +19,10 @@
           <div class="input-group">
             <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="sort">
               <option disabled selected>Choose...</option>
-              <option value="name">A -> Z</option>
-              <option value="-name">Z -> A</option>
-              <option value="category">Category</option>
-              <option value="-rating">Rating</option>
+              <option value="name" {{#if (eq sort 'name')}} selected {{/if}}>A -> Z</option>
+              <option value="-name" {{#if (eq sort '-name')}} selected {{/if}}>Z -> A</option>
+              <option value="category" {{#if (eq sort 'category')}} selected {{/if}}>Category</option>
+              <option value="-rating" {{#if (eq sort '-rating')}} selected {{/if}}>Rating</option>
             </select>
             <button class="btn btn-major" type="submit">Sort</button>
           </div>

@@ -10,7 +10,17 @@ const port = 3000
 const app = express()
 
 // Set up template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine(
+  'handlebars',
+  exphbs({
+    defaultLayout: 'main',
+    helpers: {
+      eq: function (a, b) {
+        return a === b
+      },
+    },
+  })
+)
 app.set('view engine', 'handlebars')
 
 // Set up body parse
