@@ -1,6 +1,34 @@
-<div class="container">
-  <h1>Account Login</h1>
-  <form action="/login" method="POST" class="row">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-10 col-lg-8 col-xl-6 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title mt-2">
+            <h2 class="text-center">Account Login</h2>
+          </div>
+          <hr>
+          <form action="/login" method="POST" class="row">
+            {{#if errorMsg}}
+            <div class="col-md-12 my-1 d-flex justify-content-center">
+              <small style="color: rgb(219, 2, 2);">{{ errorMsg }}</small>
+            </div>
+            {{/if}}
+            <div class="col-md-12 my-3 d-flex justify-content-center">
+              <input type="text" name="email" placeholder="Email" value="{{ email }}" required>
+            </div>
+            <div class="col-md-12 mb-3 d-flex justify-content-center">
+              <input type="text" name="password" placeholder="Password" value="{{ password }}" required>
+            </div>
+            <div class="d-flex justify-content-center my-2">
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {{!-- <form action="/login" method="POST" class="row">
     {{#if errorMsg}}
     <div class="col-md-12 my-1">
       <small style="color: rgb(219, 2, 2);">{{ errorMsg }}</small>
@@ -15,5 +43,5 @@
     <div>
       <button type="submit" class="btn btn-success">Sign in</button>
     </div>
-  </form>
+  </form> --}}
 </div>
