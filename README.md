@@ -11,6 +11,7 @@
 - 新增一筆餐廳資料
 - 修改一筆餐廳資料
 - 刪除一筆餐廳資料
+- 登入帳號
 
 ## 專案畫面
 
@@ -23,6 +24,12 @@
 
 ```
 git clone https://github.com/ivyhungtw/Restaurant-List.git
+```
+
+#### 移動至專案資料夾
+
+```
+cd Restaurant-List
 ```
 
 #### 安裝套件
