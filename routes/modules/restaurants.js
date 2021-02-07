@@ -1,13 +1,28 @@
-// Require Express and Express router
+// Require related packages
 const express = require('express')
 const router = express.Router()
 
-// Require Restaurant model
 const Restaurant = require('../../models/restaurant')
+const getUserId = require('../../public/javascripts/getUserId')
+const home = require('./home')
+
+// Define variables
+const sessions = home.sessions
+let userId
+let userInfo = {}
+
+// Get user info
+router.use(function (req, res, next) {
+  if (req.headers.cookie) {
+    userId = getUserId(req, res)
+  }
+  userInfo = sessions[userId] || {}
+  next()
+})
 
 // Set up routes
 router.get('/new', (req, res) => {
-  res.render('new')
+  res.render('new', { name: userInfo.name })
 })
 
 router.get('', (req, res) => {
@@ -21,7 +36,9 @@ router.get('', (req, res) => {
   })
     .lean()
     .sort(sort)
-    .then(restaurants => res.render('index', { restaurants, keyword, sort }))
+    .then(restaurants =>
+      res.render('index', { restaurants, keyword, sort, name: userInfo.name })
+    )
     .catch(error => console.log(error))
 })
 
@@ -56,7 +73,7 @@ router.get('/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
   Restaurant.findById(id)
     .lean()
-    .then(restaurant => res.render('show', { restaurant }))
+    .then(restaurant => res.render('show', { restaurant, name: userInfo.name }))
     .catch(error => console.log(error))
 })
 
@@ -64,7 +81,7 @@ router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
-    .then(restaurant => res.render('edit', { restaurant }))
+    .then(restaurant => res.render('edit', { restaurant, name: userInfo.name }))
     .catch(error => console.log(error))
 })
 

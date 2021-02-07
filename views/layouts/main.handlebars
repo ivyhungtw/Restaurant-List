@@ -19,9 +19,14 @@
             My Restaurant List
         </a>
         {{!-- Buttons --}}
-        <div>
-          <a href="/restaurants/new" class="btn btn-primary" id="addBtn">+ Add</a>
-          <a href="/login" class="btn btn-outline-primary" id="loginBtn">Login</a>
+        <div class="d-flex align-items-center">
+          {{#if name}}
+            <div class="me-3">Hi,{{ name }}</div>
+          {{/if}}
+          <div>
+            <a href="/restaurants/new" class="btn btn-primary" id="addBtn">+ Add</a>
+            <a href="/login" class="btn btn-outline-primary" id="loginBtn">Login</a>
+          </div>
         </div>
       </div>
     </nav>
