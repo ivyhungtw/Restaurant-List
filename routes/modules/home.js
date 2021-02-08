@@ -8,7 +8,7 @@ const users = require('../../users.json').results
 const getUserId = require('../../public/javascripts/getUserId')
 
 // Define variables
-const sessions = {}
+let sessions = {}
 let userId
 let userInfo = {}
 
@@ -39,6 +39,12 @@ router.get('/login', (req, res) => {
     if (userId) res.clearCookie('userId')
     res.render('login')
   }
+})
+
+router.get('/logout', (req, res) => {
+  res.clearCookie('userId')
+  sessions = {}
+  res.redirect('/login')
 })
 
 router.post('/login', (req, res) => {
