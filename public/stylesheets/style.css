@@ -184,3 +184,13 @@ header {
     height: auto;
   }
 }
+
+/* Login page */
+.btn-login {
+  background-color: #4592af;
+  border: none;
+}
+
+.btn-login:hover {
+  background-color: #226089;
+}

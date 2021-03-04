@@ -1,47 +1,23 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-10 col-lg-8 col-xl-6 mx-auto">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title mt-2">
-            <h2 class="text-center">Account Login</h2>
-          </div>
-          <hr>
-          <form action="/login" method="POST" class="row">
-            {{#if errorMsg}}
-            <div class="col-md-12 my-1 d-flex justify-content-center">
-              <small style="color: rgb(219, 2, 2);">{{ errorMsg }}</small>
-            </div>
-            {{/if}}
-            <div class="col-md-12 my-3 d-flex justify-content-center">
-              <input type="text" name="email" placeholder="Email" value="{{ email }}" required>
-            </div>
-            <div class="col-md-12 mb-3 d-flex justify-content-center">
-              <input type="text" name="password" placeholder="Password" value="{{ password }}" required>
-            </div>
-            <div class="d-flex justify-content-center my-2">
-              <button type="submit" class="btn btn-success">Sign in</button>
-            </div>
-          </form>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mt-3">Login</h1>
+      <form action="/users/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
         </div>
-      </div>
+        <div class="form-group mt-3">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+        </div>
+        <div class="d-grid gap-2 mt-3">
+          <button type="submit" class="btn btn-primary btn-login">Login</button>
+        </div>
+      </form>
+      <p class="lead mt-4">
+        No Account? <a href="/users/register" style="color: #4592af;">Register</a>
+      </p>
     </div>
   </div>
-  
-  {{!-- <form action="/login" method="POST" class="row">
-    {{#if errorMsg}}
-    <div class="col-md-12 my-1">
-      <small style="color: rgb(219, 2, 2);">{{ errorMsg }}</small>
-    </div>
-    {{/if}}
-    <div class="col-md-12 my-3">
-      <input type="text" name="email" placeholder="Email" value="{{ email }}" required>
-    </div>
-    <div class="col-md-12 mb-3">
-      <input type="text" name="password" placeholder="Password" value="{{ password }}" required>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-success">Sign in</button>
-    </div>
-  </form> --}}
 </div>
