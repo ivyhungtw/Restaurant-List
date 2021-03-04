@@ -7,7 +7,7 @@ const home = require('./modules/home')
 const restaurants = require('./modules/restaurants')
 
 // Direct to modules
-router.use('/', home.router)
+router.use('/', home)
 router.use('/restaurants', restaurants)
 
 // Export

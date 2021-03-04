@@ -19,6 +19,7 @@
             My Restaurant List
         </a>
         {{!-- Buttons --}}
+<<<<<<< HEAD
         <div class="d-flex align-items-center">
           {{#if name}}
             <div class="me-3">Hi,{{ name }}</div>
@@ -32,6 +33,20 @@
             <a href="/login" class="btn btn-outline-primary" id="loginBtn">Login</a>
             {{/if}}
           </div>
+||||||| 01db501 (feat: set sessions & cookies to store user login status)
+        <div class="d-flex align-items-center">
+          {{#if name}}
+            <div class="me-3">Hi,{{ name }}</div>
+          {{/if}}
+          <div>
+            <a href="/restaurants/new" class="btn btn-primary" id="addBtn">+ Add</a>
+            <a href="/login" class="btn btn-outline-primary" id="loginBtn">Login</a>
+          </div>
+=======
+        <div>
+          <a href="/restaurants/new" class="btn btn-primary" id="addBtn">+ Add</a>
+          <a href="/login" class="btn btn-outline-primary" id="loginBtn">Login</a>
+>>>>>>> parent of 01db501 (feat: set sessions & cookies to store user login status)
         </div>
       </div>
     </nav>
