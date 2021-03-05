@@ -1,5 +1,6 @@
 // Require related packages and defined server-related variables
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 
@@ -22,6 +23,15 @@ app.engine(
   })
 )
 app.set('view engine', 'handlebars')
+
+// Handle session
+app.use(
+  session({
+    secret: 'Secret',
+    resave: false,
+    saveUninitialized: true,
+  })
+)
 
 // Set up body parse
 app.use(express.urlencoded({ extended: true }))
