@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 // Require User model
 const User = require('../../models/user')
@@ -65,13 +66,18 @@ router.post('/register', (req, res) => {
       })
     }
 
-    // If not, create and save a user to model
+    // If not, hash the password and save the user model
     // then redirect to login page
-    return User.create({
-      name,
-      email,
-      password,
-    })
+    return bcrypt
+      .genSalt(10)
+      .then(salt => bcrypt.hash(password, salt))
+      .then(hash =>
+        User.create({
+          name,
+          email,
+          password: hash,
+        })
+      )
       .then(() => {
         req.flash('success_msg', 'Register successfully! Please login.')
         res.redirect('/users/login')
