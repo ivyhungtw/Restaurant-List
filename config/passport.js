@@ -16,9 +16,8 @@ module.exports = app => {
     new LocalStrategy(
       {
         usernameField: 'email',
-        passReqToCallback: true,
       },
-      (req, email, password, done) => {
+      (email, password, done) => {
         User.findOne({ email })
           .then(user => {
             if (!user) {
