@@ -1,6 +1,7 @@
 // Require related packages
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcryptjs')
 
 // Require User model
 const User = require('../models/user')
@@ -25,10 +26,15 @@ module.exports = app => {
                 message: 'The email has not been registered!',
               })
             }
-            if (password !== user.password) {
-              return done(null, false, { message: 'Incorrect password!' })
-            }
-            return done(null, user)
+            // Check password
+            return bcrypt.compare(password, user.password).then(isMatch => {
+              if (!isMatch) {
+                return done(null, false, {
+                  message: 'Incorrect password!',
+                })
+              }
+              return done(null, user)
+            })
           })
           .catch(err => done(err, false))
       }
