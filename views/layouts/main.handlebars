@@ -20,13 +20,13 @@
         </a>
         {{!-- Buttons --}}
         <div class="d-flex align-items-center">
-          {{#if name}}
-            <div class="me-3">Hi,{{ name }}</div>
+          {{#if user.name}}
+            <div class="me-3">Hi, {{ user.name }}</div>
           {{/if}}
     
           <div>
+            {{#if isAuthenticated}}
             <a href="/restaurants/new" class="btn btn-primary" id="addBtn">+ Add</a>
-            {{#if name}}
             <a href="/users/logout" class="btn btn-outline-primary" id="loginBtn">Logout</a>
             {{else}}
             <a href="/users/login" class="btn btn-outline-primary" id="loginBtn">Login</a>

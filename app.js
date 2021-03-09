@@ -50,6 +50,13 @@ app.use(methodOverride('_method'))
 // Call passport function
 usePassport(app)
 
+// Add response local variables scoped to the request
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
+
 // Direct request to routes/index.js
 app.use(routes)
 
