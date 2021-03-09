@@ -7,8 +7,10 @@ const Restaurant = require('../../models/restaurant')
 
 // Set up routes of home page
 router.get('/', (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
+    .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.log(error))
 })
