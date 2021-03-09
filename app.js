@@ -3,6 +3,7 @@ const express = require('express')
 const session = require('express-session')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -50,10 +51,15 @@ app.use(methodOverride('_method'))
 // Call passport function
 usePassport(app)
 
+// Use flash
+app.use(flash())
+
 // Add response local variables scoped to the request
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
