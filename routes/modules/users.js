@@ -9,17 +9,32 @@ const User = require('../../models/user')
 
 // Define routes
 router.get('/login', (req, res) => {
-  res.render('login', { error_msg: req.flash('error') })
+  res.render('login', {
+    error_msg: req.flash('error'),
+    email: req.session.email,
+    password: req.session.password,
+  })
 })
 
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login',
-    failureFlash: true,
-  })
-)
+router.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
+    if (err) {
+      return next(err)
+    }
+    if (!user) {
+      req.flash('error', info.message)
+      req.session.email = req.body.email
+      req.session.password = req.body.password
+      return res.redirect('/users/login')
+    }
+    req.logIn(user, function (err) {
+      if (err) {
+        return next(err)
+      }
+      return res.redirect('/')
+    })
+  })(req, res, next)
+})
 
 router.get('/register', (req, res) => {
   res.render('register')
@@ -68,6 +83,9 @@ router.post('/register', (req, res) => {
 router.get('/logout', (req, res) => {
   req.logout()
   req.flash('success_msg', 'logout successfully!')
+  // Reset email & password stored in session
+  req.session.email = ''
+  req.session.password = ''
   res.redirect('/users/login')
 })
 
