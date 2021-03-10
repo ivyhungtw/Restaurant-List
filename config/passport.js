@@ -1,6 +1,7 @@
 // Require related packages
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 const bcrypt = require('bcryptjs')
 
 // Require User model
@@ -37,6 +38,42 @@ module.exports = app => {
             })
           })
           .catch(err => done(err, false))
+      }
+    )
+  )
+  // Set up facebook strategy
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: process.env.FACEBOOK_ID,
+        clientSecret: process.env.FACEBOOK_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK,
+        profileFields: ['email', 'displayName'],
+      },
+      (accessToken, refreshToken, profile, done) => {
+        const { email, name } = profile._json
+        User.findOne({ email }).then(user => {
+          // If user already exists in User model, return user
+          if (user) return done(null, user)
+
+          // If user doesn't exist, create a user and save to User model
+          // because password field is required in the model,
+          // we have to generate a random password for it
+          const randomPassword = Math.random().toString(36).slice(-8)
+          // hash the randomPassword
+          bcrypt
+            .genSalt(10)
+            .then(salt => bcrypt.hash(randomPassword, salt))
+            .then(hash =>
+              User.create({
+                name,
+                email,
+                password: hash,
+              })
+            )
+            .then(user => done(null, user))
+            .catch(err => done(err, false))
+        })
       }
     )
   )
