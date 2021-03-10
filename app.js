@@ -13,7 +13,7 @@ const routes = require('./routes')
 const usePassport = require('./config/passport')
 require('./config/mongoose')
 
-const port = 3000
+const PORT = process.env.PORT
 const app = express()
 
 // Set up template engine
@@ -67,6 +67,6 @@ app.use((req, res, next) => {
 app.use(routes)
 
 // Start and listener on the Express server
-app.listen(port, () => {
-  console.log('Listening')
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
