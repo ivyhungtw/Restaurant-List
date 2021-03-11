@@ -46,7 +46,7 @@
                 Image
               </label>
               <div class="col-md-9">
-                <input type="text" name="image" class="form-control" id="image" value="{{restaurant.image}}" required>
+                <input type="url" name="image" class="form-control" id="image" value="{{restaurant.image}}" required>
               </div>
             </div>
             {{!-- Location --}}
@@ -64,7 +64,7 @@
                 Phone
               </label>
               <div class="col-md-9">
-                <input type="text" name="phone" class="form-control" id="phone" value="{{restaurant.phone}}" required>
+                <input type="tel" name="phone" class="form-control" minlength="9" maxlength="13"  placeholder="02 6666 6666" id="phone" value="{{restaurant.phone}}" required>
               </div>
             </div>
             {{!-- Google map --}}
@@ -73,7 +73,7 @@
                 Google map
               </label>
               <div class="col-md-9">
-                <input type="text" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}" required>
+                <input type="url" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}" required>
               </div>
             </div>
             {{!-- Rating --}}
