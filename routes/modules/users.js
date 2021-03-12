@@ -79,7 +79,11 @@ router.post('/register', (req, res) => {
         })
       )
       .then(() => {
-        req.flash('success_msg', 'Register successfully! Please login.')
+        req.session.email = req.body.email
+        req.flash(
+          'success_msg',
+          `${req.body.email} register successfully! Please login.`
+        )
         res.redirect('/users/login')
       })
       .catch(err => console.log(err))
