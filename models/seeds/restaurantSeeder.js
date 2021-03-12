@@ -23,38 +23,34 @@ const SEED_USERS = [
 
 // Success
 db.once('open', () => {
-  // hash the password for seed users
-  // this will return a list of 2 hashed passwords
-  return Promise.all(
-    SEED_USERS.map(user => {
-      return bcrypt
-        .genSalt(10)
-        .then(salt => bcrypt.hash(user.password, salt))
-        .then(hash => (user.password = hash))
-    })
-  ).then(() => {
-    // save seed users to User model
-    User.insertMany(SEED_USERS).then(users => {
-      // create restaurants owned by seed users
-      // this will return a list of 6 restaurants with userId
-      return Promise.all(
-        Array.from({ length: 6 }, (_, index) => {
-          const restaurant = restaurantList[index]
-          // restaurants of index 0~2 owned by users[0]
-          if (0 <= index && index <= 2) {
-            restaurant['userId'] = users[0]._id
-            return Restaurant.create(restaurant)
-          }
-          // restaurants of index 3~5 owned by users[1]
-          if (3 <= index && index <= 5) {
-            restaurant['userId'] = users[1]._id
-            return Restaurant.create(restaurant)
-          }
+  SEED_USERS.forEach((seedUser, index) => {
+    // hash the password for seed users
+    // this will return a user model
+    bcrypt
+      .genSalt(10)
+      .then(salt => bcrypt.hash(seedUser.password, salt))
+      .then(hash =>
+        User.create({
+          email: seedUser.email,
+          password: hash,
         })
-      ).then(() => {
+      )
+      .then(user => {
+        const userId = user._id
+        // create restaurants owned by the user
+        // this will return a list of 3 restaurants with userId
+        return Promise.all(
+          Array.from({ length: 3 }, (_, i) => {
+            const restaurant = restaurantList[i + index * 3]
+            restaurant['userId'] = userId
+            return Restaurant.create(restaurant)
+          })
+        )
+      })
+      .then(() => {
         console.log('done')
         process.exit()
       })
-    })
+      .catch(err => console.log(err))
   })
 })
