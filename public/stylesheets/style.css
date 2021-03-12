@@ -47,7 +47,7 @@ header {
   background: #dddddd center center
     url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
   background-size: cover;
-  filter: brightness(50%);
+  filter: brightness(50%) blur(3px);
 }
 
 /* Search bar */
