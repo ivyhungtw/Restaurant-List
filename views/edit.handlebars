@@ -19,7 +19,7 @@
                 Name
               </label>
               <div class="col-md-9">
-                <input type="text" name="name" class="form-control" id="name" value="{{restaurant.name}}" required>
+                <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{restaurant.name}}" required>
               </div>
             </div>
             {{!-- English name --}}
@@ -37,7 +37,7 @@
                 Category
               </label>
               <div class="col-md-9">
-                <input type="text" name="category" class="form-control" id="category" value="{{restaurant.category}}" required>
+                <input type="text" name="category" class="form-control" maxlength="10" id="category" value="{{restaurant.category}}" required>
               </div>
             </div>
             {{!-- Image --}}

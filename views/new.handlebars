@@ -14,7 +14,7 @@
             {{!-- Name --}}
             <div class="col-md-12 d-flex align-items-center justify-content-between">
               <label for="name" class="col-md-3 col-form-label">Name <span class="required">*</span> </label>
-              <input type="text" name="name" class="form-control" id="name" value="{{data.name}}" required style="width: 75%;">
+              <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{data.name}}" required style="width: 75%;">
             </div>
             {{!-- English name --}}
             <div class="col-md-12 d-flex align-items-center justify-content-between">
@@ -24,7 +24,7 @@
             {{!-- Category --}}
             <div class="col-md-12 d-flex align-items-center justify-content-between">
               <label for="category" class="col-md-3 col-form-label">Category <span class="required">*</span></label>
-              <input type="text" name="category" class="form-control" id="category" value="{{data.category}}" required style="width: 75%;">
+              <input type="text" name="category" class="form-control" maxlength="10"  id="category" value="{{data.category}}" required style="width: 75%;">
             </div>
             {{!-- Image --}}
             <div class="col-md-12 d-flex align-items-center justify-content-between">
