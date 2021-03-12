@@ -1,105 +1,71 @@
 {{!-- Banner --}}
-<header>
-  <div class="showpage-banner" style="
-    background: #dddddd center center url('{{ restaurant.image}}'); background-size: cover"></div>
-</header>
+
+<div class="showpage-banner" style="
+  background: #dddddd center center url('{{ restaurant.image}}'); background-size: cover"></div>
+
 
 <div class="container py-5">
 
   <div class="row">
-    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+    <div class="col-11 col-lg-10 col-xl-8 mx-auto" style="max-width: 750px;">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-edit"></i> Edit Restaurant Info</h5>
+          <h5 class="card-title mx-5 my-3"><i class="fas fa-edit"></i> Edit Restaurant Info</h5>
           <hr>
-          <form method="POST" action="/restaurants/{{restaurant._id}}?_method=PUT">
+
+          <form class="row g-3 mx-5" method="POST" action="/restaurants/{{restaurant._id}}?_method=PUT">
             {{!-- Name --}}
-            <div class="mb-3 row">
-              <label for="name" class="col-md-3 col-form-label">
-                Name
-              </label>
-              <div class="col-md-9">
-                <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{restaurant.name}}" required>
-              </div>
+            <div class="col-md-8 form-group">
+              <label for="name" class="col-form-label">Name <span class="required">*</span> </label>
+              <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{restaurant.name}}" required >
             </div>
             {{!-- English name --}}
-            <div class="mb-3 row">
-              <label for="name_en" class="col-md-3 col-form-label">
-                English Name
-              </label>
-              <div class="col-md-9">
-                <input type="text" name="name_en" class="form-control" id="name_en" value="{{restaurant.name_en}}">
-              </div>
-            </div>
+            {{!-- <div class="col-md-12 d-flex align-items-center justify-content-between">
+              <label for="name_en" class="col-md-3 col-form-label">English Name</label>
+              <input type="text" name="name_en" class="form-control" id="name_en" value="{{restaurant.name_en}}" >
+            </div> --}}
             {{!-- Category --}}
-            <div class="mb-3 row">
-              <label for="category" class="col-md-3 col-form-label">
-                Category
-              </label>
-              <div class="col-md-9">
-                <input type="text" name="category" class="form-control" maxlength="10" id="category" value="{{restaurant.category}}" required>
-              </div>
+            <div class="col-md-4 form-group">
+              <label for="category" class="col-form-label">Category <span class="required">*</span></label>
+              <input type="text" name="category" class="form-control" maxlength="10"  id="category" value="{{restaurant.category}}" required >
             </div>
             {{!-- Image --}}
-            <div class="mb-3 row">
-              <label for="image" class="col-md-3 col-form-label">
-                Image
-              </label>
-              <div class="col-md-9">
-                <input type="url" name="image" class="form-control" id="image" value="{{restaurant.image}}" required>
-              </div>
+            <div class="col-md-12 form-group">
+              <label for="image" class="col-md-3 col-form-label">Image <span class="required">*</span></label>
+              <input type="url" name="image" class="form-control" id="image" value="{{restaurant.image}}" required >
             </div>
             {{!-- Location --}}
-            <div class="mb-3 row">
-              <label for="location" class="col-md-3 col-form-label">
-                Location
-              </label>
-              <div class="col-md-9">
-                <input type="text" name="location" class="form-control" id="location" value="{{restaurant.location}}" required>
-              </div>
-            </div>
-            {{!-- Phone --}}
-            <div class="mb-3 row">
-              <label for="phone" class="col-md-3 col-form-label">
-                Phone
-              </label>
-              <div class="col-md-9">
-                <input type="tel" name="phone" class="form-control" minlength="9" maxlength="13"  placeholder="02 6666 6666" id="phone" value="{{restaurant.phone}}" required>
-              </div>
+            <div class="col-md-12 form-group">
+              <label for="location" class="col-md-3 col-form-label">Location <span class="required">*</span></label>
+              <input type="text" name="location" class="form-control" id="location" value="{{restaurant.location}}" required >
             </div>
             {{!-- Google map --}}
-            <div class="mb-3 row">
-              <label for="google_map" class="col-md-3 col-form-label">
-                Google map
-              </label>
-              <div class="col-md-9">
-                <input type="url" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}" required>
-              </div>
+            <div class="col-md-12 form-group">
+              <label for="google_map" class="col-md-3 col-form-label">Google map <span class="required">*</span></label>
+              <input type="url" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}" required >
+            </div>
+            {{!-- Phone --}}
+            <div class="col-md-6 form-group">
+              <label for="phone" class="col-md-3 col-form-label">Phone <span class="required">*</span></label>
+              <input type="tel" name="phone" class="form-control" id="phone" minlength="9" maxlength="13" placeholder="02 6666 6666" value="{{restaurant.phone}}" required >
             </div>
             {{!-- Rating --}}
-            <div class="mb-3 row">
-              <label for="rating" class="col-md-3 col-form-label">
-                Rating
-              </label>
-              <div class="col-md-9">
-                <input type="range" class="form-range" min="1" max="5" step="0.1" name="rating" id="rating" value="{{restaurant.rating}}" required>
-              </div>
+            <div class="col-md-6 form-group">
+              <label for="rating" class="col-form-label">Rating <span class="required">*</span></label>
+              <input type="number" class="form-control" id="rating" name="rating" min="1.0" max="5.0" placeholder="1.0" step="0.1" value="{{restaurant.rating}}" required>
             </div>
             {{!-- Description --}}
-            <div class="mb-3 row">
-              <label for="description" class="col-md-3 col-form-label">
-                Description
-              </label>
-              <div class="col-md-9">
-                <input type="text" name="description" class="form-control" id="description" value="{{restaurant.description}}" required>
-              </div>
+            <div class="col-md-12 form-group mb-2">
+              <label for="description" class="col-md-3 col-form-label">Description <span class="required">*</span></label>
+              <input type="text" name="description" class="form-control" id="description" value="{{restaurant.description}}" required >
             </div>
-
-            <button class="btn btn-success" type="submit">Save</button>
+            {{!-- Button --}}
+            <div class="col-12 my-4">
+              <button class="btn btn-success" type="submit">Save</button>
+            </div>
           </form>
-        </div>
-
         
+        </div>
       </div>
     </div>
   </div>
