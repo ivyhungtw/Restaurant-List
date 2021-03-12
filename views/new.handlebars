@@ -14,7 +14,7 @@
             {{!-- Name --}}
             <div class="col-md-8 form-group">
               <label for="name" class="col-form-label">Name <span class="required">*</span> </label>
-              <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{data.name}}" required >
+              <input type="text" name="name" class="form-control" maxlength="12" id="name" placeholder="Restaurant's name" value="{{data.name}}" required >
             </div>
             {{!-- English name --}}
             {{!-- <div class="col-md-12 d-flex align-items-center justify-content-between">
@@ -24,27 +24,27 @@
             {{!-- Category --}}
             <div class="col-md-4 form-group">
               <label for="category" class="col-form-label">Category <span class="required">*</span></label>
-              <input type="text" name="category" class="form-control" maxlength="10"  id="category" value="{{data.category}}" required >
+              <input type="text" name="category" class="form-control" maxlength="10"  id="category" placeholder="ex: Italian" value="{{data.category}}" required >
             </div>
             {{!-- Image --}}
             <div class="col-md-12 form-group">
               <label for="image" class="col-md-3 col-form-label">Image <span class="required">*</span></label>
-              <input type="url" name="image" class="form-control" id="image" value="{{data.image}}" required >
+              <input type="url" name="image" class="form-control" id="image" placeholder="https://" value="{{data.image}}" required >
             </div>
             {{!-- Location --}}
             <div class="col-md-12 form-group">
               <label for="location" class="col-md-3 col-form-label">Location <span class="required">*</span></label>
-              <input type="text" name="location" class="form-control" id="location" value="{{data.location}}" required >
+              <input type="text" name="location" class="form-control" id="location" placeholder="Restaurant's address" value="{{data.location}}" required >
             </div>
             {{!-- Google map --}}
             <div class="col-md-12 form-group">
               <label for="google_map" class="col-md-3 col-form-label">Google map <span class="required">*</span></label>
-              <input type="url" name="google_map" class="form-control" id="google_map" value="{{data.google_map}}" required >
+              <input type="url" name="google_map" class="form-control" id="google_map" placeholder="Google map URL" value="{{data.google_map}}" required >
             </div>
             {{!-- Phone --}}
             <div class="col-md-6 form-group">
               <label for="phone" class="col-md-3 col-form-label">Phone <span class="required">*</span></label>
-              <input type="tel" name="phone" class="form-control" id="phone" minlength="9" maxlength="13" placeholder="02 6666 6666" value="{{data.phone}}" required >
+              <input type="tel" name="phone" class="form-control" id="phone" minlength="9" maxlength="13" placeholder="ex: 02 6666 6666" value="{{data.phone}}" required >
             </div>
             {{!-- Rating --}}
             <div class="col-md-6 form-group">
@@ -54,7 +54,7 @@
             {{!-- Description --}}
             <div class="col-md-12 form-group mb-2">
               <label for="description" class="col-md-3 col-form-label">Description <span class="required">*</span></label>
-              <input type="text" name="description" class="form-control" id="description" value="{{data.description}}" required >
+              <input type="text" name="description" class="form-control" id="description"  placeholder="Restaurant's introduction" value="{{data.description}}" required >
             </div>
             {{!-- Button --}}
             <div class="col-12 my-4">
