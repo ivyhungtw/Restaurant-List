@@ -4,60 +4,60 @@
 <div class="container py-5">
 
   <div class="row">
-    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+    <div class="col-11 col-lg-10 col-xl-8 mx-auto" style="max-width: 750px;">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-plus-circle"></i> Add New Restaurant</h5>
+          <h5 class="card-title mx-5 my-3"><i class="fas fa-plus-circle"></i> Add New Restaurant</h5>
           <hr>
 
-          <form class="row g-3" method="POST" action="/restaurants">
+          <form class="row g-3 mx-5" method="POST" action="/restaurants">
             {{!-- Name --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
-              <label for="name" class="col-md-3 col-form-label">Name <span class="required">*</span> </label>
-              <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{data.name}}" required style="width: 75%;">
+            <div class="col-md-8 form-group">
+              <label for="name" class="col-form-label">Name <span class="required">*</span> </label>
+              <input type="text" name="name" class="form-control" maxlength="12" id="name" value="{{data.name}}" required >
             </div>
             {{!-- English name --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
+            {{!-- <div class="col-md-12 d-flex align-items-center justify-content-between">
               <label for="name_en" class="col-md-3 col-form-label">English Name</label>
-              <input type="text" name="name_en" class="form-control" id="name_en" value="{{data.name_en}}" style="width: 75%;">
-            </div>
+              <input type="text" name="name_en" class="form-control" id="name_en" value="{{data.name_en}}" >
+            </div> --}}
             {{!-- Category --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
-              <label for="category" class="col-md-3 col-form-label">Category <span class="required">*</span></label>
-              <input type="text" name="category" class="form-control" maxlength="10"  id="category" value="{{data.category}}" required style="width: 75%;">
+            <div class="col-md-4 form-group">
+              <label for="category" class="col-form-label">Category <span class="required">*</span></label>
+              <input type="text" name="category" class="form-control" maxlength="10"  id="category" value="{{data.category}}" required >
             </div>
             {{!-- Image --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
+            <div class="col-md-12 form-group">
               <label for="image" class="col-md-3 col-form-label">Image <span class="required">*</span></label>
-              <input type="url" name="image" class="form-control" id="image" value="{{data.image}}" required style="width: 75%;">
+              <input type="url" name="image" class="form-control" id="image" value="{{data.image}}" required >
             </div>
             {{!-- Location --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
+            <div class="col-md-12 form-group">
               <label for="location" class="col-md-3 col-form-label">Location <span class="required">*</span></label>
-              <input type="text" name="location" class="form-control" id="location" value="{{data.location}}" required style="width: 75%;">
-            </div>
-            {{!-- Phone --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
-              <label for="phone" class="col-md-3 col-form-label">Phone <span class="required">*</span></label>
-              <input type="tel" name="phone" class="form-control" id="phone" minlength="9" maxlength="13" placeholder="02 6666 6666" value="{{data.phone}}" required style="width: 75%;">
+              <input type="text" name="location" class="form-control" id="location" value="{{data.location}}" required >
             </div>
             {{!-- Google map --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
+            <div class="col-md-12 form-group">
               <label for="google_map" class="col-md-3 col-form-label">Google map <span class="required">*</span></label>
-              <input type="url" name="google_map" class="form-control" id="google_map" value="{{data.google_map}}" required style="width: 75%;">
+              <input type="url" name="google_map" class="form-control" id="google_map" value="{{data.google_map}}" required >
+            </div>
+            {{!-- Phone --}}
+            <div class="col-md-6 form-group">
+              <label for="phone" class="col-md-3 col-form-label">Phone <span class="required">*</span></label>
+              <input type="tel" name="phone" class="form-control" id="phone" minlength="9" maxlength="13" placeholder="02 6666 6666" value="{{data.phone}}" required >
             </div>
             {{!-- Rating --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
-              <label for="rating" class="col-md-3 col-form-label">Rating <span class="required">*</span></label>
-              <input type="range" class="form-range" min="1" max="5" step="0.1" name="rating" id="rating" required style="width: 75%;">
+            <div class="col-md-6 form-group">
+              <label for="rating" class="col-form-label">Rating <span class="required">*</span></label>
+              <input type="number" class="form-control" id="rating" name="rating" min="1.0" max="5.0" placeholder="1.0" step="0.1" required>
             </div>
             {{!-- Description --}}
-            <div class="col-md-12 d-flex align-items-center justify-content-between">
+            <div class="col-md-12 form-group mb-2">
               <label for="description" class="col-md-3 col-form-label">Description <span class="required">*</span></label>
-              <input type="text" name="description" class="form-control" id="description" value="{{data.description}}" required style="width: 75%;">
+              <input type="text" name="description" class="form-control" id="description" value="{{data.description}}" required >
             </div>
             {{!-- Button --}}
-            <div class="col-12">
+            <div class="col-12 my-4">
               <button class="btn btn-success" type="submit">Create</button>
             </div>
           </form>
