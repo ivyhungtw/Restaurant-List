@@ -22,35 +22,38 @@ const SEED_USERS = [
 ]
 
 // Success
-db.once('open', () => {
-  SEED_USERS.forEach((seedUser, index) => {
-    // hash the password for seed users
-    // this will return a user model
-    bcrypt
-      .genSalt(10)
-      .then(salt => bcrypt.hash(seedUser.password, salt))
-      .then(hash =>
-        User.create({
-          email: seedUser.email,
-          password: hash,
-        })
-      )
-      .then(user => {
-        const userId = user._id
-        // create restaurants owned by the user
-        // this will return a list of 3 restaurants with userId
-        return Promise.all(
-          Array.from({ length: 3 }, (_, i) => {
-            const restaurant = restaurantList[i + index * 3]
-            restaurant['userId'] = userId
-            return Restaurant.create(restaurant)
+db.once('open', async () => {
+  await new Promise(function (resolve) {
+    SEED_USERS.forEach((seedUser, index) => {
+      // hash the password for seed users
+      // this will return a user model
+      bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(seedUser.password, salt))
+        .then(hash =>
+          User.create({
+            email: seedUser.email,
+            password: hash,
           })
         )
-      })
-      .then(() => {
-        console.log('done')
-        process.exit()
-      })
-      .catch(err => console.log(err))
+        .then(user => {
+          const userId = user._id
+          // create restaurants owned by the user
+          // this will return a list of 3 restaurants with userId
+          return Promise.all(
+            Array.from({ length: 3 }, (_, i) => {
+              const restaurant = restaurantList[i + index * 3]
+              restaurant['userId'] = userId
+              return Restaurant.create(restaurant)
+            })
+          )
+        })
+        .then(() => {
+          console.log('done')
+          if (index === SEED_USERS.length - 1) resolve()
+        })
+        .catch(err => console.log(err))
+    })
   })
+  process.exit()
 })
