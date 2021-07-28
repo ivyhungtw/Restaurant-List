@@ -5,20 +5,23 @@ const Schema = mongoose.Schema
 // Define Schema
 const userSchema = new Schema({
   name: {
-    type: String,
+    type: String
   },
   email: {
     type: String,
-    required: true,
+    required: true
   },
   password: {
     type: String,
-    required: true,
+    required: true
+  },
+  googleId: {
+    type: String
   },
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 })
 
 // Export User model
