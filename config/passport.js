@@ -2,6 +2,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const bcrypt = require('bcryptjs')
 
 // Require User model
@@ -17,21 +18,21 @@ module.exports = app => {
   passport.use(
     new LocalStrategy(
       {
-        usernameField: 'email',
+        usernameField: 'email'
       },
       (email, password, done) => {
         User.findOne({ email })
           .then(user => {
             if (!user) {
               return done(null, false, {
-                message: 'The email has not been registered!',
+                message: 'The email has not been registered!'
               })
             }
             // Check password
             return bcrypt.compare(password, user.password).then(isMatch => {
               if (!isMatch) {
                 return done(null, false, {
-                  message: 'Incorrect password!',
+                  message: 'Incorrect password!'
                 })
               }
               return done(null, user)
@@ -48,7 +49,7 @@ module.exports = app => {
         clientID: process.env.FACEBOOK_ID,
         clientSecret: process.env.FACEBOOK_SECRET,
         callbackURL: process.env.FACEBOOK_CALLBACK,
-        profileFields: ['email', 'displayName'],
+        profileFields: ['email', 'displayName']
       },
       (accessToken, refreshToken, profile, done) => {
         const { email, name } = profile._json
@@ -68,7 +69,7 @@ module.exports = app => {
               User.create({
                 name,
                 email,
-                password: hash,
+                password: hash
               })
             )
             .then(user => done(null, user))
@@ -77,6 +78,40 @@ module.exports = app => {
       }
     )
   )
+
+  // Set up google strategy
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK
+      },
+      function (token, tokenSecret, profile, done) {
+        const { sub, name, email } = profile._json
+        // Check if user already exists
+        User.findOne({ googleId: sub }).then(user => {
+          if (user) return done(null, user)
+
+          const randomPassword = Math.random().toString(36).slice(-8)
+          bcrypt
+            .genSalt(10)
+            .then(salt => bcrypt.hash(randomPassword, salt))
+            .then(hash =>
+              User.create({
+                name,
+                email,
+                password: hash,
+                googleId: sub
+              })
+            )
+            .then(user => done(null, user))
+            .catch(err => done(err, false))
+        })
+      }
+    )
+  )
+
   // Configure Passport authenticated session persistence.
   // In order to restore authentication state across HTTP requests, Passport needs to serialize users into and deserialize users out of the session.  The typical implementation of this is as simple as supplying the user ID when serializing, and querying the user record by ID from the database when deserializing.
   passport.serializeUser((user, done) => {
